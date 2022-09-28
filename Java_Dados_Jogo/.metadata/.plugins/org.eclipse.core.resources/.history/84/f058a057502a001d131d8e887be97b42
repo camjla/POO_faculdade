@@ -1,0 +1,51 @@
+package participante;
+
+import  dado.Dado;
+
+public class Jogador {
+	static int staticId = 0;
+	int idPlayer = 0;
+	String name = "";
+	int pontuacao = 0;
+	Dado dado = new Dado();
+	
+	public Jogador(String nickName) {
+		this.name = nickName;
+		staticId += 1;
+		this.idPlayer = staticId;
+	}
+	
+	public int getId() {
+		return this.idPlayer;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getPontos() {
+		return this.pontuacao;
+	}
+	
+	public void Jogar() {
+		
+        // Faz um CAST convertando Math para inteiro
+        // Gera 6 números aleatórios
+		int dadoUm = this.dado.GirarDado();
+        int dadoDois = this.dado.GirarDado();
+        
+        // Vai mostrar na tela o valor sorteado
+        System.out.println("Face do dado um: "  +  dadoUm);
+        System.out.println("Face do dado dois: "  +  dadoDois);
+        
+        if(dadoUm == dadoDois) {
+        	this.pontuacao += 1;
+        	System.out.println("\nVocê venceu!! Parabéns!!\n");
+        	System.out.println("===============================================");
+        } else {
+        	System.out.println("\nVocê perdeu...\n");
+        	System.out.println("===============================================");
+        }
+        
+	}
+}

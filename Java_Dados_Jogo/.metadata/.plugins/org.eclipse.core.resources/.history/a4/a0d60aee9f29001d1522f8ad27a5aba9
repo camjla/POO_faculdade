@@ -1,0 +1,33 @@
+package participante;
+
+import  dado.Dado;
+
+public class Jogador {
+	static int id = 1;
+	String name = "";
+	Dado dado = new Dado();
+	
+	public Jogador(String nickName) {
+		this.name = nickName;
+	}
+	
+	public int Jogar() {
+		
+        // Faz um CAST convertando Math para inteiro
+        // Gera 6 números aleatórios
+		int dadoUm = this.dado.GirarDado();
+        int dadoDois = this.dado.GirarDado();
+        
+        // Vai mostrar na tela o valor sorteado
+        System.out.println("Face do dado um: "  +  dadoUm);
+        System.out.println("Face do dado dois: "  +  dadoDois);
+        
+        if(dadoUm == dadoDois) {
+        	System.out.println("\nVocê venceu!! Parabéns!!\n");
+        } else {
+        	System.out.println("\nVocê perdeu...\n");
+        }
+        
+		return 0;
+	}
+}

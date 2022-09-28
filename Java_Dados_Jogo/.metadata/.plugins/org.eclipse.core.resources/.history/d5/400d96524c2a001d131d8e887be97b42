@@ -1,0 +1,72 @@
+import java.util.Scanner;
+import participante.Jogador;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+
+        // "ln" significa que vai ter quebra de linha no final
+        System.out.println("-------------------------------------------------------");
+        System.out.println("\t\tBem vindo(a) ao Dados Wap");
+        System.out.println("-------------------------------------------------------");
+
+        // Cria um objeto para ler valores digitados no teclado
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.print("Digite o nome do jogador 1: ");
+        String playerName1 = teclado.next();
+        System.out.print("\nDigite o nome do jogador 2: ");
+        String playerName2 = teclado.next();
+        
+        Jogador player1 = new Jogador(playerName1);
+        Jogador player2 = new Jogador(playerName2);
+        
+        
+        // Cria uma variavel de opção
+       char opcao = 'S';
+       String jogadorAtual = "";
+       int contador = 1;
+
+        // Laço de repetição = vai repetir a mensagem enquanto a opção for igual a S 
+        while (Character.toUpperCase(opcao) == 'S')
+        {
+        	
+        	if((contador % 2) != 0) {
+        		jogadorAtual = player1.getName();
+        	} else {
+        		jogadorAtual = player2.getName();
+        	}
+        	
+            System.out.println("\n\nLançando o dado");
+            System.out.println(".");
+            Thread.sleep(1000);
+            System.out.println(".");
+            Thread.sleep(2000);
+            System.out.println(".\n");
+            Thread.sleep(1000);
+            
+            System.out.println("\t\t\tNOME DOS JOGADORES");
+            System.out.println("NOME: "+ player1.getName() + "\t\tID: " + player1.getId());
+            System.out.println("NOME: "+ player2.getName() + "\t\tID: " + player2.getId() + "\n");
+            
+            System.out.println("******* Jogador atual: " + jogadorAtual + " *******\n");
+            
+            player1.Jogar();
+            
+            System.out.print("Gostaria de jogar mais uma vez? ");
+            // Vai capturar apenas a primeira letra digitada
+            opcao = teclado.next().charAt(0);
+            
+            if(Character.toUpperCase(opcao) != 'S' && Character.toUpperCase(opcao) != 'N') {
+            	System.out.println("\n\t\tTecla inválida... Programa finalizado.");
+            	break;
+            }
+            
+            contador = (contador == 2 ? 1 : 2);
+	            
+        }
+        
+        teclado.close();
+
+    }
+
+}

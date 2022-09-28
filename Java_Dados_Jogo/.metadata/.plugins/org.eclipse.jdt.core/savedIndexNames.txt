@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Java_Dados_Jogo\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+2508929818.index
+4281901095.index

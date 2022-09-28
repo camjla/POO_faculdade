@@ -1,0 +1,111 @@
+/**
+ * 
+ * @authors Camila De Lima Tronco - RA: 00250537;
+ * 			Giovanni Tomaz Amorim - RA: 00263194;
+ * 			Karen Barbosa Da Silva - RA: 00250410;
+ * 			Sara De Oliveira Alcaras - RA: 00264840;
+ * 			Vinicius Gois Firmino - RA: 00263804.
+ * 
+ * Obs.: Jogo desenvolvido na IDE Eclipse!
+ */
+
+import java.util.Scanner;
+import participante.Jogador;
+
+
+public class App {
+    public static void main(String[] args) throws Exception {
+
+        // "ln" significa que vai ter quebra de linha no final
+        System.out.println("-------------------------------------------------------");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("\t\tBem vindo(a) ao Dados Wap");
+        System.out.println("-------------------------------------------------------");
+        System.out.println("-------------------------------------------------------\n");
+        
+        // Cria um objeto para ler valores digitados no teclado
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.print("Digite o nome do jogador 1: ");
+        String playerName1 = teclado.next();
+        System.out.print("\nDigite o nome do jogador 2: ");
+        String playerName2 = teclado.next();
+        
+        Jogador player1 = new Jogador(playerName1);
+        Jogador player2 = new Jogador(playerName2);
+        
+        
+        // Cria uma variavel de opção
+       char opcao = 'S';
+       String jogadorAtual = "";
+       int contador = 1;
+
+        // Laço de repetição = vai repetir a mensagem enquanto a opção for igual a S 
+        while (Character.toUpperCase(opcao) == 'S')
+        {
+        	
+        	if((contador % 2) != 0) {
+        		jogadorAtual = player1.getName();
+        	} else {
+        		jogadorAtual = player2.getName();
+        	}
+            
+            System.out.println("\n============================================================================================");
+            System.out.println("\tJOGADORES\n");
+            System.out.println("NOME: "+ player1.getName() + "\t\tID: " + player1.getId() + "\t\tTotal de Pontos: " + player1.getPontos());
+            System.out.println("NOME: "+ player2.getName() + "\t\tID: " + player2.getId() + "\t\tTotal de Pontos: " + player2.getPontos() + "\n");
+            System.out.println("============================================================================================");
+            
+            System.out.println("\n******* Jogador atual: " + jogadorAtual + " *******");
+            
+            System.out.println("\nLançando os dados");
+            System.out.println(".");
+            Thread.sleep(1000);
+            System.out.println(".");
+            Thread.sleep(2000);
+            System.out.println(".\n");
+            Thread.sleep(1000);
+            
+            player1.Jogar();
+            
+            if(contador == 1) {
+            	opcao = 'S';
+            } else {
+            	System.out.println("\n============================================================================================");
+                System.out.println("\tJOGADORES\n");
+                System.out.println("NOME: "+ player1.getName() + "\t\tID: " + player1.getId() + "\t\tTotal de Pontos: " + player1.getPontos());
+                System.out.println("NOME: "+ player2.getName() + "\t\tID: " + player2.getId() + "\t\tTotal de Pontos: " + player2.getPontos() + "\n");
+                System.out.println("============================================================================================");
+                
+                do {
+	                // Vai capturar apenas a primeira letra digitada
+	            	System.out.print("\n\nGostaria de jogar mais uma vez? ");
+	                opcao = teclado.next().charAt(0);
+	                
+	                if(Character.toUpperCase(opcao) != 'S' && Character.toUpperCase(opcao) != 'N') {
+	                	System.out.println("\n!!!!!!! Tecla inválida... Favor, digite 'S' ou 'N' para seguir. !!!!!!!");
+	                }
+                } while (Character.toUpperCase(opcao) != 'S' && Character.toUpperCase(opcao) != 'N');
+            }
+            
+            contador = (contador == 2 ? 1 : 2);
+	            
+        }
+        
+        System.out.println("\nResultado final da partida:\n");
+        
+        if(player1.getPontos() > player2.getPontos()) {
+        	System.out.println("<<<<<<< E o vencedor(a) é: " + player1.getName() + "!! >>>>>>>");
+        }
+        else if (player2.getPontos() > player1.getPontos()) {
+        	System.out.println("<<<<<<< E o vencedor(a) é: " + player2.getName() + "!! >>>>>>>");
+        }
+        else {
+        	System.out.println("<<<<<<< Tivemos um empateeeeee!! >>>>>>>");
+        }
+        	
+        teclado.close();
+
+    }
+
+}

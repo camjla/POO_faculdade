@@ -1,0 +1,53 @@
+import java.util.Scanner;
+import participante.Jogador;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+
+        // "ln" significa que vai ter quebra de linha no final
+        System.out.println("-------------------------------------------------------");
+        System.out.println("\t\tBem vindo ao JOGO DO DADO");
+        System.out.println("-------------------------------------------------------");
+
+        // Cria um objeto para ler valores digitados no teclado
+        Scanner teclado = new Scanner(System.in);
+        Jogador player1 = new Jogador("Player1");
+        Jogador player2 = new Jogador("Player2");
+        
+        
+        // Cria uma variavel de opção
+       char opcao = 'S';
+
+        // Laço de repetição = vai repetir a mensagem enquanto a opção for igual a S 
+        while (Character.toUpperCase(opcao) == 'S')
+        {
+        			
+            System.out.println("Lançando o dado");
+            System.out.println(".");
+            Thread.sleep(1000);
+            System.out.println(".");
+            Thread.sleep(2000);
+            System.out.println(".\n");
+            Thread.sleep(1000);
+            
+            //jogador
+            System.out.println("NOME: "+ player1.getName() + "\t\tID: " + player1.getId());
+            System.out.println("NOME: "+ player2.getName() + "\t\tID: \n" + player2.getId());
+            
+            player1.Jogar();
+            
+            System.out.print("Gostaria de jogar mais uma vez? ");
+            // Vai capturar apenas a primeira letra digitada
+            opcao = teclado.next().charAt(0);
+            
+            if(Character.toUpperCase(opcao) != 'S' && Character.toUpperCase(opcao) != 'N') {
+            	System.out.println("\n\t\tTecla inválida... Programa finalizado.");
+            }
+	            
+        }
+        
+        teclado.close();
+
+    }
+
+}

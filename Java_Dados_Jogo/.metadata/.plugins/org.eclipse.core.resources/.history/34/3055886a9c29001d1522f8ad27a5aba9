@@ -1,0 +1,13 @@
+package participante;
+
+import  dado.Dado;
+
+
+public class Jogador {
+	int id = 1;
+	String name = "";
+	
+	public int Jogar() {
+		return 0;
+	}
+}
